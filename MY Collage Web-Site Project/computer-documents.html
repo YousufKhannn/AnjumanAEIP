@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Access Page</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        #fileList {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .fileItem {
+            background-color: #ecf0f1;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .downloadBtn {
+            background-color: #2ecc71;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="width-100 header-menu">
+        <div class="container">
+
+            <ul class="main-menu">
+                <li><a href="A - Main page.html">Home Page</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <header>
+        <h1>File Access Page</h1>
+    </header>
+
+    <ul id="fileList"></ul>
+    <script>
+        const fileList = document.getElementById('fileList');
+
+        // Replace these sample file URLs with your actual file URLs
+        const files = [{
+                name: '1st & 2nd semester Sllybus',
+                url: 'https://dtek.karnataka.gov.in/storage/pdf-files/C-20%20syllabus/C_20_CSE_1_2_Sem.pdf'
+            }, {
+                name: '3th & 4th semester Slybus',
+                url: 'https://dtek.karnataka.gov.in/storage/pdf-files/C-20%20syllabus/C_20_CS_3_4_Sem.pdf'
+            }, {
+                name: '5th & 6th semester Slybus',
+                url: 'https://dtek.karnataka.gov.in/storage/pdf-files/CDC/C20_5_6_sem_CSE.pdf'
+            }, {
+                name: '1th & 2nd semester Notes',
+                url: 'https://dtek.karnataka.gov.in/storage/pdf-files/CDC/C20_5_6_sem_CSE.pdf'
+            }, {
+                name: '3th & 4th semester Notes',
+                url: 'https://dtek.karnataka.gov.in/storage/pdf-files/CDC/C20_5_6_sem_CSE.pdf'
+            }, {
+                name: '5th & 6th semester Notes',
+                url: 'https://dtek.karnataka.gov.in/storage/pdf-files/CDC/C20_5_6_sem_CSE.pdf'
+            }, {
+                name: 'hbdbvv',
+                URL: 'file:///D:/Fullstack%20notes/FSD_Lab_Pgms23.pdf'
+            }
+            // Add more files as needed
+        ];
+
+        // Display files in the list
+        files.forEach(file => {
+            displayFile(file);
+        });
+
+        function displayFile(file) {
+            const listItem = document.createElement('li');
+            listItem.classList.add('fileItem');
+
+            const fileName = document.createElement('span');
+            fileName.textContent = file.name;
+
+            const downloadBtn = document.createElement('button');
+            downloadBtn.classList.add('downloadBtn');
+            downloadBtn.textContent = 'Download';
+            downloadBtn.addEventListener('click', () => {
+                downloadFile(file.url, file.name);
+            });
+
+            listItem.appendChild(fileName);
+            listItem.appendChild(downloadBtn);
+
+            fileList.appendChild(listItem);
+        }
+
+        function downloadFile(url, fileName) {
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = fileName;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+
+</html>

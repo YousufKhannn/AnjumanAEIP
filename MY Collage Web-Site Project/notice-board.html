@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="main.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    html,
+    body {
+        font-family: sans-serif;
+        background-color: #f0f3fa;
+    }
+    
+    .header-menu {
+        position: fixed;
+        width: 100%;
+        height: 10vh;
+        /* border-bottom: 1px solid black; */
+    }
+    
+    .main-menu {
+        list-style: none;
+        float: left;
+        margin-top: 5px;
+    }
+    
+    .main-menu a {
+        font-weight: 500;
+        color: #000000;
+        font-size: 17px;
+        text-decoration: none;
+    }
+    
+    .main-menu a::after {
+        content: '';
+        width: 0%;
+        height: 2px;
+        background: #f44336;
+        display: block;
+        margin: auto;
+        transition: 0.5s;
+    }
+    
+    .main-menu a:hover::after {
+        width: 100%;
+    }
+    
+    .main-menu a:hover {
+        color: rgb(51, 0, 255)
+    }
+    
+    .main-menu li {
+        position: relative;
+        display: flex;
+        padding-top: 2vh;
+        float: left;
+        /* /* padding: 30px 35px; */
+        padding-right: 40px;
+        margin-left: 2vw;
+    }
+    
+    h1 {
+        padding-top: 5vh;
+    }
+    
+    .notice-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 80vh;
+        background-color: #f0f3fa;
+    }
+    
+    .notice {
+        height: 80%;
+        width: 80%;
+        background-color: antiquewhite;
+        box-shadow: 0 0 50px 0px rgb(0, 0, 0, 0.2);
+    }
+</style>
+
+<body>
+    <div class="width-100 header-menu">
+        <div class="container">
+
+            <ul class="main-menu">
+                <li><a href="A - Main page.html">Home Page</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <center>
+        <h1>Notice Board</h1>
+    </center>
+
+    <div class="notice-box">
+        <div class="notice">
+
+            <a href="#">Updated Results</a>
+
+            <a href="#">Currest sem Timetable's</a>
+
+        </div>
+    </div>
+</body>
+
+</html>

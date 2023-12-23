@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        #fileInput {
+            display: none;
+        }
+        
+        #fileLabel {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+        }
+        
+        #fileList {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .fileItem {
+            background-color: #ecf0f1;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .fileActions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .deleteBtn {
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Upload-Your-Notes</h1>
+    </header>
+
+    <input type="file" id="fileInput" multiple>
+    <label for="fileInput" id="fileLabel">Upload Files</label>
+
+    <ul id="fileList"></ul>
+
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const fileList = document.getElementById('fileList');
+
+        fileInput.addEventListener('change', handleFileUpload);
+
+        function handleFileUpload(event) {
+            const files = event.target.files;
+
+            for (const file of files) {
+                displayFile(file);
+            }
+
+            // Clear the file input
+            fileInput.value = '';
+        }
+
+        function displayFile(file) {
+            const listItem = document.createElement('li');
+            listItem.classList.add('fileItem');
+
+            const fileName = document.createElement('span');
+            fileName.textContent = file.name;
+
+            const fileActions = document.createElement('div');
+            fileActions.classList.add('fileActions');
+
+            const deleteBtn = document.createElement('button');
+            deleteBtn.classList.add('deleteBtn');
+            deleteBtn.textContent = 'Delete';
+            deleteBtn.addEventListener('click', () => {
+                listItem.remove();
+            });
+
+            fileActions.appendChild(deleteBtn);
+
+            listItem.appendChild(fileName);
+            listItem.appendChild(fileActions);
+
+            fileList.appendChild(listItem);
+        }
+    </script>
+
+</body>
+
+</html>
